@@ -2,7 +2,7 @@
 
 import markdown
 from tornado.web import HTTPError
-from tornado.web import authenticate
+from tornado.web import authenticated
 
 import model
 from .base import BaseHandler
@@ -13,6 +13,6 @@ class Node(BaseHandler):
     def get(self, node_id):
         pass
 
-    @authenticate
+    @authenticated
     def post(self):
         pass

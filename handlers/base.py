@@ -25,7 +25,7 @@ class BaseHandler(tornado.web.RequestHandler):
         return user
 
 
-    @propety
+    @property
     def session(self):
         return session
 

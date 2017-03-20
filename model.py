@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, Column, text
 from sqlalchemy.types import *
 from sqlalchemy.ext.declarative import declarative_base
 

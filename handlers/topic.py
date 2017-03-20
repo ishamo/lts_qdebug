@@ -2,11 +2,12 @@
 
 import markdown
 from tornado.web import HTTPError
-from tornado.web import authenticate
+from tornado.web import authenticated
 
 import model
 from .base import BaseHandler
 from utils.session import DBSession
+from utils.identity import admin_required
 
 
 class Topic(BaseHandler):

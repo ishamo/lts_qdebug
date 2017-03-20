@@ -2,7 +2,7 @@
 
 import markdown
 from tornado.web import HTTPError
-from tornado.web import authenticate
+from tornado.web import authenticated
 
 import model
 from .base import BaseHandler

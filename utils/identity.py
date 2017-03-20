@@ -3,7 +3,7 @@
 
 import functools
 
-import models
+import model
 from utils.session import DBSession
 
 
@@ -14,7 +14,7 @@ def admin_required(func):
         user_id = headers['user_id']
         token_string = headers['token_string']
 
-        with open DBSession as sess:
+        with DBSession() as sess:
             user = sess.query(User).filter_by(id_=user_id).first()
             if not user or not user.role == 'admin':
                 raise HTTPError(403, "admin needed")

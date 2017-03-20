@@ -2,7 +2,7 @@
 
 import markdown
 from tornado.web import HTTPError
-from tornado.web import authenticate
+from tornado.web import authenticated
 
 import model
 from .base import BaseHandler
@@ -16,7 +16,7 @@ class PostHandler(BaseHandler):
                 raise HTTPErorr(404)
             return self.render('post_.html', post_)
 
-    @authenticate
+    @authenticated
     def post(self):
         title = self.get_argument('title', '')
         markdown = self.get_argument('text', '')
@@ -38,11 +38,11 @@ class PostHandler(BaseHandler):
 
         return self.redirect('/posts/%s' % post_.id_)
 
-    @authenticate
+    @authenticated
     def put(self):
         pass
 
-    @authenticate
+    @authenticated
     def delete(self):
         pass
 

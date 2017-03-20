@@ -2,12 +2,13 @@
 
 import markdown
 from tornado.web import HTTPError
-from tornado.web import authenticate
+from tornado.web import authenticated
 
 from model import *
 from .base import BaseHandler
 from utils.session import DBSession
-from transactions.trans_node import get_post_by_node
+from utils.identity import admin_required
+from api.nodeLite import get_post_by_nodeid
 
 
 class Node(BaseHandler):

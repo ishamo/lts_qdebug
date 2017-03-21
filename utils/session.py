@@ -14,6 +14,8 @@ engine = create_engine("mysql://%s:%s@localhost:3306/%s" %
 
 Session = sessionmaker(engine)
 
+session = Session()
+
 
 @contextlib.contextmanager
 def DBSession():

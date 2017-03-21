@@ -1,5 +1,7 @@
 # coding: utf-8
 
+import os
+
 import tornado.web
 import tornado.ioloop
 import tornado.httpserver
@@ -20,7 +22,7 @@ class Application(tornado.web.Application):
             login_url="/login",
             debug=True,
         )
-        super(Application, self).__init__(handlers, *settings)
+        super(Application, self).__init__(handlers, **settings)
 
 
 def main():

@@ -12,3 +12,8 @@ from utils.session import DBSession
 class Home(BaseHandler):
     def get(self):
         return self.render('home.html')
+
+
+urls = [
+    (r"/", Home),
+]

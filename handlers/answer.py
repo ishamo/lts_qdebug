@@ -16,3 +16,8 @@ class Node(BaseHandler):
     @authenticated
     def post(self):
         pass
+
+
+urls = [
+        (r"/node", Node),
+]

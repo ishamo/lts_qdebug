@@ -9,8 +9,7 @@ from model import Base
 import settings
 
 
-engine = create_engine("mysql://%s:%s@localhost:3306/%s" % 
-        (settings.MYSQL_USER, settings.MYSQL_PASSWORD, settings.MYSQL_DBNAME))
+engine = create_engine(settings.MYSQL_CONF)
 
 Session = sessionmaker(engine)
 
@@ -20,6 +19,6 @@ session = Session()
 @contextlib.contextmanager
 def DBSession():
     yield
-    session.remove()
+    session.close()
 
 

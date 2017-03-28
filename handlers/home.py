@@ -11,7 +11,9 @@ from utils.session import DBSession
 
 class Home(BaseHandler):
     def get(self):
-        return self.render('home.html')
+        #TODO: pane module
+        panes = self.session.query(model.Pane).filter_by(module="home").all()
+        return self.render('home.html', panes=panes)
 
 
 urls = [

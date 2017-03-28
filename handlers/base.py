@@ -32,4 +32,4 @@ class BaseHandler(tornado.web.RequestHandler):
         return Session()
 
     def on_finish(self):
-        self.session.remove()
+        self.session.close()

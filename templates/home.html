@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-	hello
+	{% for post_ in posts_ %}
+		{% module Gather(post_) %}
+	{% end %}
+{% end %}
+
+{% block pane %}
+{% for pane in panes %}
+	{% module Pane(pane) %}
+{% end %}
 {% end %}
 

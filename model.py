@@ -1,8 +1,9 @@
 # coding: utf-8
 
-from sqlalchemy import create_engine, Column, text
-from sqlalchemy.types import *
+from sqlalchemy import create_engine, Column, text, Integer, Unicode, Enum, UnicodeText
+# from sqlalchemy.types import *
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.dialects.mysql import TIMESTAMP
 
 from pbkdf2 import crypt
 
@@ -22,8 +23,9 @@ class User(Base):
     email = Column(Unicode(64))
     role = Column(Enum('admin', 'normal'), default='normal')
     bio = Column(Unicode(128))
-    created_at = Column(DateTime, server_default=text('NOW()'))
-    updated_at = Column(DateTime, server_default=text('NOW()'), onupdate=text('NOW'))
+    avatar = Column(Unicode(256))
+    created_at = Column(TIMESTAMP, server_default=text('CURRENT_TIMESTAMP'))
+    updated_at = Column(TIMESTAMP, server_default=text('0'))
 
     def check_password(self, password, salt):
         salt = self.password[:8]
@@ -58,8 +60,8 @@ class Post_(Base):
     title = Column(Unicode(32))
     html = Column(UnicodeText)
     markdown = Column(UnicodeText)
-    created_at = Column(DateTime, server_default=text('NOW()'))
-    updated_at = Column(DateTime, server_default=text('NOW()'), onupdate=text('NOW'))
+    created_at = Column(TIMESTAMP, server_default=text('CURRENT_TIMESTAMP'))
+    updated_at = Column(TIMESTAMP, server_default=text('0'))
     user_id = Column(Integer)
     node_id = Column(Integer)
 
@@ -88,3 +90,11 @@ class Answer(Base):
     text = Column(UnicodeText)
     user_id = Column(Integer)
     post_id = Column(Integer)
+
+
+class Pane(Base):
+    __tablename__ = 'pane'
+    id_ = Column(Integer, primary_key=True)
+    module = Column(Unicode(8))
+    title = Column(Unicode(32))
+    text = Column(Unicode(256))

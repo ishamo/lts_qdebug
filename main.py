@@ -8,6 +8,7 @@ import tornado.httpserver
 import tornado.options
 
 from handlers.urls import urls
+from handlers.modules import PaneModule
 import settings
 
 
@@ -19,6 +20,7 @@ class Application(tornado.web.Application):
             static_path = os.path.join(os.path.dirname(__file__), "static"),
             xsrf_cookies=True,
             cookie_secret="asldfasjdfas",
+            ui_modules={"Pane": PaneModule, "Gather": GatherModule},
             login_url="/login",
             debug=True,
         )

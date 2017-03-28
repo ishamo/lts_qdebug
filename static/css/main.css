@@ -1,0 +1,14 @@
+body {
+	font-size: 14px;
+	background-color: #eee;
+}
+
+#logo-brand {
+	color: darkred;
+}
+
+
+#main-framework {
+	margin-top: 1.5em;
+	margin-left: 30%;
+}

@@ -1,4 +1,6 @@
 from __future__ import with_statement
+
+import os, sys
 from alembic import context
 from sqlalchemy import engine_from_config, pool
 from logging.config import fileConfig
@@ -15,6 +17,12 @@ fileConfig(config.config_file_name)
 # for 'autogenerate' support
 
 # todo: path
+
+MODEL_PATH = "/home/neil/work/qdebug"
+# MODEL_PATH = os.path.abspath(os.path.pardir)
+print MODEL_PATH
+if not MODEL_PATH in sys.path:
+    sys.path.append(MODEL_PATH)
 
 from model import Base 
 # target_metadata = mymodel.Base.metadata

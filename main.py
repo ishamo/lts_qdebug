@@ -8,7 +8,7 @@ import tornado.httpserver
 import tornado.options
 
 from handlers.urls import urls
-from handlers.modules import PaneModule
+from handlers.modules import PaneModule, GatherModule
 import settings
 
 

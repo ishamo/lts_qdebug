@@ -32,4 +32,14 @@ class BaseHandler(tornado.web.RequestHandler):
         return Session()
 
     def on_finish(self):
-        self.session.close()
+        self.set_secure_cookie("node", self.request.uri)
+        if self.current_user:
+            self.set_secure_cookie("user", self.current_user.id_)
+            self.set_secure_cookie("token", utils.get_token(user_id))
+        else:
+            self.set_secure_cookie("user", None)
+            self.set_secure_cookie("token", None)
+        try:
+            self.session.close()
+        except:
+            pass

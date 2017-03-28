@@ -12,8 +12,8 @@ from api.nodeLite import get_post_by_nodeid
 
 
 class Node(BaseHandler):
+    @admin_required
     def get(self):
-        """实际上是创建node的那个页面，这么写是错的！！！"""
         return self.render('node.html', error=None)
 
     @admin_required
@@ -39,7 +39,6 @@ class Node(BaseHandler):
 
     @admin_required
     def delete(self, node_id):
-        pass
         pass
 
 
